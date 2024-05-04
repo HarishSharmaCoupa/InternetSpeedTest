@@ -1,2 +1,2 @@
 // Entry point for the build script in your package.json
-import './Components/places_list'
+import './Components/app'

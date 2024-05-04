@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "places#index"
+
+  get "/api/places", to: "api/places#index"
+
+  get "/new-internet-speed", to: "internet_speeds#new"
 end

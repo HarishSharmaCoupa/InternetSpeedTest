@@ -1,8 +1,7 @@
 module Api
     class PlacesController < ApplicationController
-        def index
-
-            places = Place.all.map do |place|
+        def index   
+            places = get_matching_places(search_term_param).map do |place|
             
                 {
                     name: place.name,
@@ -28,6 +27,19 @@ module Api
 
         def number_of_measurements(place)
         end
+        
+        def get_matching_places(search_term)
+            if search_term.blank?
+                Place.all
+            else
+                
+                Place.where("name LIKE ? OR city LIKE ?", "%#{search_term}%", "%#{search_term}%")
 
+            end
+        end
+
+        def search_term_param
+            params["search_term"]
+        end
     end
 end
