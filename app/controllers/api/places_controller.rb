@@ -1,5 +1,8 @@
 module Api
     class PlacesController < ApplicationController
+        skip_before_action :verify_authenticity_token
+        
+
         def index   
             places = get_matching_places(search_term_param).map do |place|
             
